@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 var setup = {
         input: {
-            core: "raphael.core.js",
-            svg: "raphael.svg.js",
-            vml: "raphael.vml.js",
-            eve: "../mywork/eve/eve.js",
-            copy: "copy.js"
+            core: "src/raphael.core.js",
+            svg: "src/raphael.svg.js",
+            vml: "src/raphael.vml.js",
+            eve: "lib/eve.js",
         },
         output: {
             "raphael-min.js": function () {
