@@ -490,9 +490,20 @@ window.Raphael.vml && function (R) {
                 setCoords(this, split.scalex, split.scaley, split.dx, split.dy, split.rotate);
             }
         } else {
-            o.style.filter = E;
-            skew.matrix = Str(matrix);
-            skew.offset = matrix.offset();
+            if(this.skew){
+                o.style.filter = E;
+                skew.matrix = Str(matrix);
+                skew.offset = matrix.offset();
+            }else{
+                o.style.position = 'absolute';
+                o.style.width = '2000px';
+                o.style.height = '2000px';
+                o.style.zoom = 1;
+                o.style.filter =
+                    "progid:DXImageTransform.Microsoft.Matrix(M11=" + matrix.a +
+                    ", M12=" + matrix.b + ", M21=" + matrix.c + ", M22=" + matrix.d + ", Dx=" + matrix.e + ", Dy=" + matrix.f +
+                    ", SizingMethod='auto expand', FilterType='bilinear')";
+            }
         }
         oldt && (this._.transform = oldt);
         return this;

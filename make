@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var setup = {
         input: {
+            copy: "copy.js",
             core: "src/raphael.core.js",
             svg: "src/raphael.svg.js",
             vml: "src/raphael.vml.js",
