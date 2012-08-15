@@ -21,7 +21,7 @@ var setup = {
             },
         }
     },
-    ujs = require("/Users/dmitry/Sites/UglifyJS/uglify-js.js"),
+    ujs = require("uglify-js"),
     jsp = ujs.parser,
     pro = ujs.uglify,
     fs = require("fs"),
