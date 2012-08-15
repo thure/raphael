@@ -1198,6 +1198,21 @@ window.Raphael.svg && function (R) {
         setFillAndStroke(res, res.attrs);
         return res;
     };
+    R._engine.group = function (svg, set) {
+        var el = $('g'),
+            res = new Element(el, svg),
+            i;
+        svg.canvas && svg.canvas.appendChild(el);
+        for(i=0; i<set[0].length; i+=1){
+            var child = set[0][i];
+            el.appendChild(child[0]);
+            child.group = res;
+        }
+        set.group = res;
+        res.set = set;
+        res.type = 'group';
+        return res;
+    };
     R._engine.setSize = function (width, height) {
         this.width = width || this.width;
         this.height = height || this.height;

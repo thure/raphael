@@ -842,6 +842,21 @@ window.Raphael.vml && function (R) {
         p.transform(E);
         return p;
     };
+    R._engine.group = function (vml, set) {
+        var el = createNode('group'),
+            g = new Element(el, vml),
+            i;
+        vml.canvas.appendChild(el);
+        for(i=0; i<set[0].length; i+=1){
+            var child = set[0][i];
+            el.appendChild(child[0]);
+            child.group = g;
+        }
+        set.group = g;
+        g.set = set;
+        g.type = 'group';
+        return g;
+    };
     R._engine.setSize = function (width, height) {
         var cs = this.canvas.style;
         this.width = width;

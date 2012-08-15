@@ -2775,9 +2775,9 @@
      * Raphael.el
      [ property (object) ]
      **
-     * You can add your own method to elements. This is usefull when you want to hack default functionality or
+     * You can add your own method to elements. This is useful when you want to hack default functionality or
      * want to wrap some common transformation or attributes in one method. In difference to canvas methods,
-     * you can redefine element method at any time. Expending element methods wouldn’t affect set.
+     * you can redefine element method at any time. Expending element methods wouldn't affect set.
      > Usage
      | Raphael.el.red = function () {
      |     this.attr({fill: "#f00"});
@@ -3245,6 +3245,25 @@
     \*/
     paperproto.ellipse = function (x, y, rx, ry) {
         var out = R._engine.ellipse(this, x || 0, y || 0, rx || 0, ry || 0);
+        this.__set__ && this.__set__.push(out);
+        return out;
+    };
+    /*\
+     * Paper.group
+     [ method ]
+     **
+     * Creates a group from a set.
+     **
+     > Parameters
+     **
+     - set (Set) the set of elements to be added to the group
+     = (object) Raphaël element object with type “group”
+     **
+     > Usage
+     | var c = paper.group(set);
+     \*/
+    paperproto.group = function (set) {
+        var out = R._engine.group(this, set);
         this.__set__ && this.__set__.push(out);
         return out;
     };
