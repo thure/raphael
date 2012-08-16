@@ -1783,6 +1783,7 @@
                 if (dot.color.error) {
                     return null;
                 }
+                "opacity" in dot.color && (dot.opacity = dot.color.opacity);
                 dot.color = dot.color.hex;
                 par[2] && (dot.offset = par[2] + "%");
                 dots.push(dot);
@@ -3873,7 +3874,8 @@ window.Raphael.svg && function (R) {
                 for (var i = 0, ii = dots.length; i < ii; i++) {
                     el.appendChild($("stop", {
                         offset: dots[i].offset ? dots[i].offset : i ? "100%" : "0%",
-                        "stop-color": dots[i].color || "#fff"
+                      "stop-color": dots[i].color || "#fff",
+                      "stop-opacity" : "opacity" in dots[i] ? dots[i].opacity : 1
                     }));
                 }
             }
