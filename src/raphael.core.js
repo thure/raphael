@@ -2062,6 +2062,7 @@
                 if (dot.color.error) {
                     return null;
                 }
+                "opacity" in dot.color && (dot.opacity = dot.color.opacity);
                 dot.color = dot.color.hex;
                 par[2] && (dot.offset = par[2] + "%");
                 dots.push(dot);
